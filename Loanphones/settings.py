@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z9ldk%gy7@w9%r!ux(ps=8ad-4!+__lqoy4ipl$f*c6xis4dz$'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -92,7 +92,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
        'NAME': 'railway',
        'USER': 'postgres',
-       'PASSWORD': 'PPnFYWMtRdMQJAvxSLnGMebmJedLlyhe',
+       'PASSWORD': config('DATABASE_PASS'),
        'HOST': 'monorail.proxy.rlwy.net',
        'PORT': '35206',
    }
@@ -146,10 +146,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST ='smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'benedictbrian614@gmail.com'
-EMAIL_HOST_PASSWORD = 'ubagllfgankoaafu'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_PASS')
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'benedictbrian614@gmail.com'
+DEFAULT_FROM_EMAIL = config('EMAIL')
 # EMAIL_USE_SSL = False
 
 django_heroku.settings(locals())
