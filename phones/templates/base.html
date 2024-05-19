@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Phone World{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+body {
+    background-color: #0075C9; /* Set the main background color */
+}
+
+.navbar {
+    background-color: #686868; /* Set the navbar background color */
+}
+
+.navbar-light .navbar-toggler-icon {
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(0, 123, 255, 0.5)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E'); /* Set the color of the navbar toggler icon */
+}
+
+.footer {
+    background-color: #333; /* Dark footer background */
+}
+
+.footer h5 {
+    color: #fff; /* White text for headings */
+}
+
+.footer ul {
+    list-style: none; /* Remove default list styling */
+}
+
+.footer ul li {
+    color: #ddd; /* Light grey text for list items */
+}
+
+.btn-social-icon {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent buttons */
+    color: #fff; /* White icons */
+}
+
+.btn-social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* More visible on hover */
+}
+
+.logo-text {
+    color: #0075C9; /* Blue color */
+    font-size: 36px; /* Adjust font size as needed */
+    font-weight: bold; /* Make it bold */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Add spacing between letters */
+} 
+
+.card-custom-1 {
+    background-color: #ffc107; /* Yellow */
+}
+
+.card-custom-2 {
+    background-color: #28a745; /* Green */
+}
+
+.card-custom-3 {
+    background-color: #007bff; /* Blue */
+}
+
+.about-header {
+    height: 300px; /* Adjust the height as needed */
+    position: relative; /* Ensure overlay covers the entire background */
+    color: #fff; /* Optional: Change text color for better contrast */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add an overlay for better readability of text */
+}
+
+.content {
+    position: relative; /* Ensure text is positioned correctly */
+    z-index: 1; /* Ensure text appears above overlay */
+}
+</style>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="{% url 'home' %}">Phone Store</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'contact_us' %}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about_us' %}">About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div >
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+<footer class="footer bg-dark text-white">
+    <div class="container py-5">
+        <div class="row">
+            <!-- About Information -->
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h1 class="logo-text mb-4">Phone World</h1>
+                <p>Our company has been providing quality products since 2023. Visit us to learn more.</p>
+            </div>
+            <!-- Contact Information -->
+            <div class="col-md-4 mb-4 mb-md-0">
+                <h5 class="text-primary">Contact Us</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-map-marker-alt pr-2"></i> Nairobi, Kenya</li>
+                    <li><i class="fas fa-phone-alt pr-2"></i> +254 713623409</li>
+                    <li><i class="fas fa-envelope pr-2"></i> Phonestore@info.com</li>
+                </ul>
+            </div>
+            <!-- Subscription Form -->
+            <div class="col-md-4">
+                <h5 class="text-primary mb-3">Subscribe to Our Newsletter</h5>
+                <form action="/subscribe" method="post">
+                    <div class="input-group">
+                        <input type="email" name="email" class="form-control" placeholder="Your Email" aria-label="Your Email" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-light">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <span class="text-muted">Follow us on:</span>
+        <a href="#" class="btn btn-social-icon btn-facebook mx-1"><i class="fab fa-facebook-f text-primary"></i></a>
+        <a href="#" class="btn btn-social-icon btn-twitter mx-1"><i class="fab fa-twitter text-primary"></i></a>
+        <a href="#" class="btn btn-social-icon btn-instagram mx-1"><i class="fab fa-instagram text-primary"></i></a>
+    </div>
+</footer>
+  
+
+<!-- Include Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+</body>
+</html>

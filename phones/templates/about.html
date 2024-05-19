@@ -1,0 +1,91 @@
+<!-- <div class="container-fluid p-0">
+    <div class="about-header" style="background-color: #f8f9fa; padding: 100px 0; text-align: center;">
+        <div class="overlay">
+        <div class="content">
+            <h1 class="mt-5 mb-4">About Us</h1>
+            <p class="lead">Welcome to Phone Store, your one-stop destination for the latest mobile phones!</p>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card card-custom-1 text-center shadow">
+                    <div class="card-body">
+                        <i class="fas fa-coins fa-3x mb-3 text-warning"></i>
+                        <h3 class="card-title">Fast</h3>
+                        <p class="card-text">We aim to get your asset processed within 20 minutes!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom-2 text-center shadow">
+                    <div class="card-body">
+                        <i class="far fa-calendar-alt fa-3x mb-3 text-success"></i>
+                        <h3 class="card-title">Flexible</h3>
+                        <p class="card-text">Low down payment with affordable weekly payments for 52 weeks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom-3 text-center shadow">
+                    <div class="card-body">
+                        <i class="fas fa-file-contract fa-3x mb-3 text-info"></i>
+                        <h3 class="card-title">Transparent</h3>
+                        <p class="card-text">No hidden fees; what you see is what you get.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block title %}About Us - Phone Store{% endblock %}
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="about-header" style="background-color: #f8f9fa; padding: 100px 0; text-align: center;">
+        <div class="overlay">
+        <div class="content">
+            <h1 class="mt-5 mb-4"><i class="fa fa-info-circle"></i>   About Us</h1> <!-- Include Bootstrap icon class here -->
+            <p class="lead">Welcome to Phone World, your one-stop destination for the latest mobile phones!</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card card-custom-1 text-center shadow">
+                <div class="card-body">
+                    <i class="fas {{ 'Efficient'|get_icon_class }} fa-3x mb-3 text-warning"></i>
+                    <h3 class="card-title">Efficient</h3>
+                    <p class="card-text">We aim to provide efficient and reliable service to our customers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-custom-2 text-center shadow">
+                <div class="card-body">
+                    <i class="far {{ 'Convenient'|get_icon_class }} fa-3x mb-3 text-success"></i>
+                    <h3 class="card-title">Convenient</h3>
+                    <p class="card-text">We offer convenient payment plans tailored to your needs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-custom-3 text-center shadow">
+                <div class="card-body">
+                    <i class="fas {{ 'Transparent'|get_icon_class }} fa-3x mb-3 text-info"></i>
+                    <h3 class="card-title">Transparent</h3>
+                    <p class="card-text">We believe in transparency and honesty in all our dealings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ products.brand }} {{ products.model_name }} - Phone Store
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ products.image.url }}" alt="{{ products.brand }} {{ products.model_name }}" class="img-fluid mb-4">
+        </div>
+        <div class="col-md-6">
+            <h1 class="display-4 text-primary mb-4">{{ products.brand }} {{ products.model_name }}</h1>
+            <p class="lead">{{ products.description }}</p>
+            <hr>
+            <div class="product-attributes">
+                <ul class="list-group">
+                    <li class="list-group-item"><i class="fas fa-camera text-primary"></i> Camera: {{ products.camera }}</li>
+                    <li class="list-group-item"><i class="fas fa-hdd text-primary"></i> Storage/RAM: {{ products.storage_ram }}</li>
+                    <li class="list-group-item"><i class="fas fa-battery-full text-primary"></i> Battery: {{ products.battery }}</li>
+                    <li class="list-group-item"><i class="fab fa-android text-primary"></i> Android Version: {{ products.android_version }}</li>
+                    <li class="list-group-item"><i class="fas fa-sim-card text-primary"></i> SIM Type: {{ products.sim_type }}</li>
+                    <li class="list-group-item"><i class="fas fa-mobile text-primary"></i> Screen: {{ products.screen }}</li>
+                    <li class="list-group-item"><i class="fas fa-dollar-sign text-primary"></i> Price: Tsh{{ products.price }}</li>
+                </ul>
+            </div>
+            <div class="btn-group mt-4" role="group" aria-label="Product actions">
+                <a href="{% url 'payment_application' product_id=products.id %}" class="btn btn-primary btn-lg btn-block">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
