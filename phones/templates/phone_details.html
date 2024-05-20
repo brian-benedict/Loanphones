@@ -5,13 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-6">
             <img src="{{ products.image.url }}" alt="{{ products.brand }} {{ products.model_name }}" class="img-fluid mb-4">
         </div>
         <div class="col-md-6">
-            <h1 class="display-4 text-primary mb-4">{{ products.brand }} {{ products.model_name }}</h1>
+            <h1 class="display-4 text-primary mb-4">{{ products.name }} {{ products.model_name }}</h1>
             <p class="lead">{{ products.description }}</p>
             <hr>
             <div class="product-attributes">
@@ -22,7 +22,7 @@
                     <li class="list-group-item"><i class="fab fa-android text-primary"></i> Android Version: {{ products.android_version }}</li>
                     <li class="list-group-item"><i class="fas fa-sim-card text-primary"></i> SIM Type: {{ products.sim_type }}</li>
                     <li class="list-group-item"><i class="fas fa-mobile text-primary"></i> Screen: {{ products.screen }}</li>
-                    <li class="list-group-item"><i class="fas fa-dollar-sign text-primary"></i> Price: Tsh{{ products.price }}</li>
+                    <li class="list-group-item"><i class="fas fa-dollar-sign text-primary"></i> Price: Tsh{{ products.price }} Pay a deposit of Tsh{{ product.initial_loan_amount }}</li>
                 </ul>
             </div>
             <div class="btn-group mt-4" role="group" aria-label="Product actions">

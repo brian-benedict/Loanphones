@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">{{ product.name }}</h5>
                     <p class="card-text"></p>
-                    <p class="card-text text-center" style="font-size: 12px;">Pay a deposit of Tsh{{ product.deposit }} and get a phone</p> <!-- Adjust the font size as needed -->
+                    <p class="card-text text-center" style="font-size: 12px;">Pay a deposit of Tsh{{ product.initial_loan_amount }} and get a phone</p> <!-- Adjust the font size as needed -->
                     <p class="card-text text-center">Price: Tsh{{ product.price }}</p> <!-- Include price here -->
                     <div class="d-flex justify-content-center align-items-center">
                         <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#quickViewModal{{ product.id }}">
@@ -78,7 +78,7 @@
                             <div class="col-md-6">
                                 <div class="product-info">
                                     <ul class="list-unstyled">
-                                        <li><i class="fas fa-mobile-alt"></i> <strong>Name:</strong> {{ product.name }}</li>
+                                        <li><i class="fas fa-mobile-alt"></i> <strong>Name: {{ product.name }}</strong></li>
                                         <li><i class="fas fa-info-circle"></i> <strong>Description:</strong> {{ product.description }}</li>
                                         <li><i class="fas fa-camera"></i> <strong>Camera:</strong> {{ product.camera }}</li>
                                         <li><i class="fas fa-hdd"></i> <strong>Storage/RAM:</strong> {{ product.storage_ram }}</li>
