@@ -13,7 +13,7 @@ from .models import Product
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'image', 'camera', 'storage_ram', 'battery', 'android_version', 'sim_type', 'screen']
+        fields = ['name', 'description', 'image', 'camera', 'storage_ram', 'battery', 'android_version', 'sim_type', 'screen', 'price' ,'initial_loan_amount']
 
 
 # In forms.py
