@@ -87,6 +87,7 @@
                                         <li><i class="fas fa-sim-card"></i> <strong>SIM Type:</strong> {{ product.sim_type }}</li>
                                         <li><i class="fas fa-mobile"></i> <strong>Screen:</strong> {{ product.screen }}</li>
                                         <li><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> Tsh{{ product.price }}</li>
+                                        <li><i class="fas fa-piggy-bank"></i> <strong>Deposit:</strong> Tsh{{ product.initial_loan_amount }}</li>
                                     </ul>
                                     <!-- Buy Now Button -->
                                     <a href="{% url 'phone_details' phone_id=product.id %}" class="btn btn-primary">Buy Now</a>
