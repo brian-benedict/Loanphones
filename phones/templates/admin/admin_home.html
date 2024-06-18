@@ -1,0 +1,24 @@
+{% extends 'admin/admin_base.html' %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Admin Home</h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% url 'product_registration' %}">Register Product</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'download_data' %}">Download Customer Data</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

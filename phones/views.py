@@ -5,6 +5,15 @@ from .models import Phone, Customer, Product, PaymentApplication
 from django.contrib import messages
 
 
+
+
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
+
+
 # Create your views here.
 
 def home(request):
@@ -30,15 +39,58 @@ def about_us(request):
 
 
 
+# def product_registration(request):
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('home')  # Redirect to home page after successful registration
+#     else:
+#         form = ProductForm()
+#     return render(request, 'product_registration.html', {'form': form})
+
+
+
+from django.http import HttpResponse
+import csv
+
+@login_required
 def product_registration(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('home')  # Redirect to home page after successful registration
+            return redirect('admin_home')  # Redirect to admin home after successful registration
     else:
         form = ProductForm()
     return render(request, 'product_registration.html', {'form': form})
+
+
+
+
+@login_required
+def download_data(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="payment_applications.csv"'
+
+    writer = csv.writer(response)
+    # Write the header row
+    writer.writerow([
+        'First Name', 'Last Name', 'ID Number', 'Phone 1', 'Phone 2', 
+        'Region', 'District', 'Street', 'Gender', 'Age Range', 'Payment Choice'
+    ])
+
+    # Write data rows
+    applications = PaymentApplication.objects.all().values_list(
+        'firstname', 'lastname', 'id_number', 'phone1', 'phone2', 
+        'region', 'district', 'street', 'gender', 'age_range', 'payment_choice'
+    )
+    for application in applications:
+        writer.writerow(application)
+
+    return response
+
 
 
 
@@ -89,11 +141,11 @@ def loan_application_success(request):
 
 
 
-# views.py
-
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
-from .models import Product
+from django.conf import settings
+from django.contrib import messages
+from .models import Product, PaymentApplication
 from .forms import LoanApplicationForm
 
 def payment_application(request, product_id):
@@ -101,27 +153,26 @@ def payment_application(request, product_id):
     if request.method == 'POST':
         form = LoanApplicationForm(request.POST)
         if form.is_valid():
-            # Get cleaned form data
-            cleaned_data = form.cleaned_data
+            # Save the form data to the PaymentApplication model
+            # payment_application = form.save()
+            form.save()
 
             # Format form data into email message
             email_message = f"Product: {product.name}\n\n"
-            for field_name, field_value in cleaned_data.items():
+            for field_name, field_value in form.cleaned_data.items():
                 email_message += f"{field_name.capitalize()}: {field_value}\n"
 
             # Send email
             subject = 'New Payment Application Submission'
             sender_email = settings.DEFAULT_FROM_EMAIL
-            recipient_email = 'gorasha6@gmail.com'
-            send_mail(subject, email_message, sender_email, [recipient_email])
-
+            recipient_email = 'brian.benedict@gretsauniversity.ac.ke'
             try:
-                send_mail(subject, email_message, sender_email, recipient_email)
+                send_mail(subject, email_message, sender_email, [recipient_email])
                 messages.success(request, 'Email sent successfully!')
             except Exception as e:
                 messages.error(request, 'Failed to send email: {}'.format(str(e)))
 
-            return redirect('loan_application_success')  # Redirect to a success page
+            return redirect('home')  # Redirect to a success page
 
     else:
         form = LoanApplicationForm()
@@ -133,3 +184,78 @@ def payment_application(request, product_id):
     }    
     return render(request, 'payment_application.html', context)
 
+
+
+
+
+
+
+# from django.shortcuts import render, redirect
+# from django.core.mail import send_mail
+# from .models import Product
+# from .forms import LoanApplicationForm
+
+# def payment_application(request, product_id):
+#     product = Product.objects.get(pk=product_id)
+#     if request.method == 'POST':
+#         form = LoanApplicationForm(request.POST)
+#         if form.is_valid():
+#             # Get cleaned form data
+#             cleaned_data = form.cleaned_data
+#             payment_application = form.save()
+
+#             # Format form data into email message
+#             email_message = f"Product: {product.name}\n\n"
+#             for field_name, field_value in cleaned_data.items():
+#                 email_message += f"{field_name.capitalize()}: {field_value}\n"
+
+#             # Send email
+#             subject = 'New Payment Application Submission'
+#             sender_email = settings.DEFAULT_FROM_EMAIL
+#             recipient_email = 'brian.benedict@gretsauniversity.ac.ke'
+#             send_mail(subject, email_message, sender_email, [recipient_email])
+
+#             try:
+#                 send_mail(subject, email_message, sender_email, recipient_email)
+#                 messages.success(request, 'Email sent successfully!')
+#             except Exception as e:
+#                 messages.error(request, 'Failed to send email: {}'.format(str(e)))
+
+#             return redirect('loan_application_success')  # Redirect to a success page
+
+#     else:
+#         form = LoanApplicationForm()
+
+#     context = {
+#         'form': form,
+#         'product': product,
+#         'initial_loan_amount': product.initial_loan_amount,
+#     }    
+#     return render(request, 'payment_application.html', context)
+
+
+
+
+@login_required
+def admin_home(request):
+    return render(request, 'admin/admin_home.html')
+
+
+
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('admin_home')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'registration/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
