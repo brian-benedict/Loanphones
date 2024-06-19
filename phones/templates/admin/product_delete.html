@@ -1,0 +1,23 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body text-center">
+            <h2 class="card-title mb-4">Delete Product</h2>
+            <p>Are you sure you want to delete the product "<strong>{{ product.name }}</strong>"?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Confirm Delete</button>
+                <a href="{% url 'admin_home' %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMUUpS2t1Z6ksm4aLCk4lsLhqEVxZncmw+Ad9H" crossorigin="anonymous">
+
+<!-- Add Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-pzjw8f+ua7Kw1TIqPQ+Wo9aEZ5ePp1s7P04nwlm2hxNf9N93fDw/C0dqmepeN6d5" crossorigin="anonymous">
+{% endblock %}

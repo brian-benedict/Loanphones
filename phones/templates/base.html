@@ -8,6 +8,118 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
 body {
+    background-color: #0075C9; /* Main background color */
+}
+
+.footer {
+    background-color: #333; /* Dark footer background */
+    padding: 20px 0;
+}
+
+.footer h5 {
+    color: #fff; /* White text for headings */
+}
+
+.footer ul {
+    list-style: none; /* Remove default list styling */
+}
+
+.footer ul li {
+    color: #ddd; /* Light grey text for list items */
+}
+
+.btn-social-icon {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent buttons */
+    color: #fff; /* White icons */
+}
+
+.btn-social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* More visible on hover */
+}
+
+.logo-text {
+    color: #0075C9; /* Blue color */
+    font-size: 36px; /* Adjust font size as needed */
+    font-weight: bold; /* Make it bold */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Add spacing between letters */
+}
+
+.card-custom-1 {
+    background-color: #ffc107; /* Yellow */
+}
+
+.card-custom-2 {
+    background-color: #28a745; /* Green */
+}
+
+.card-custom-3 {
+    background-color: #007bff; /* Blue */
+}
+
+.about-header {
+    height: 300px; /* Adjust the height as needed */
+    position: relative; /* Ensure overlay covers the entire background */
+    color: #fff; /* Optional: Change text color for better contrast */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add an overlay for better readability of text */
+}
+
+.content {
+    position: relative; /* Ensure text is positioned correctly */
+    z-index: 1; /* Ensure text appears above overlay */
+}
+
+.carousel-caption h5, .carousel-caption p {
+    background: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.how-it-works-card {
+    border-radius: 10%;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.how-it-works-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-body img {
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.footer .container {
+    padding: 10px;
+}
+
+.footer span {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+
+
+
+
+
+
+body {
     background-color: #0075C9; /* Set the main background color */
 }
 

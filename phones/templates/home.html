@@ -4,24 +4,28 @@
 {% block title %}Home - SimuSmat{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container mt-5">
     <!-- Carousel -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <!-- Add more indicators here if needed -->
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{% static 'images/Get Loan Now (2).png' %}" class="d-block w-100" alt="...">
-                <!-- Add carousel item content here if needed -->
+                <img src="{% static 'images/Get Loan Now (2).png' %}" class="d-block w-100" alt="Get Loan Now">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Get a Loan for Your Favorite Phone</h5>
+                    <p>Easy and Fast Loan Application</p>
+                </div>
             </div>
             <div class="carousel-item">
-                <img src="{% static 'images/Get Loan Now.png' %}" class="d-block w-100" alt="...">
-                <!-- Add carousel item content here if needed -->
+                <img src="{% static 'images/Get Loan Now.png' %}" class="d-block w-100" alt="Get Loan Now">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Own a Phone with a Small Deposit</h5>
+                    <p>Flexible Payment Plans Available</p>
+                </div>
             </div>
-            <!-- Add more carousel items here if needed -->
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -37,20 +41,19 @@
     <div class="row mt-4">
         {% for product in products %}
         <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
+            <div class="card h-100 product-card">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title text-center">{{ product.name }}</h5>
-                    <p class="card-text"></p>
-                    <p class="card-text text-center" style="font-size: 12px;">Pay a deposit of Tsh{{ product.initial_loan_amount }} and get a phone</p> <!-- Adjust the font size as needed -->
-                    <p class="card-text text-center">Price: Tsh{{ product.price }}</p> <!-- Include price here -->
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">Pay a deposit of Tsh{{ product.initial_loan_amount }} and get a phone</p>
+                    <p class="card-text">Price: Tsh{{ product.price }}</p>
                     <div class="d-flex justify-content-center align-items-center">
                         <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#quickViewModal{{ product.id }}">
                             Quick View
                         </button>
                         <a href="{% url 'phone_details' phone_id=product.id %}" class="btn btn-primary">Buy Now</a>
                     </div>
-                </div>                
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -71,28 +74,22 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="product-image">
-                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
-                                </div>
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
                             </div>
                             <div class="col-md-6">
                                 <h1 class="display-6 text-primary mb-2">{{ product.name }}</h1>
-                                <div class="product-info">
-                                    <ul class="list-unstyled">
-                                        <!-- <li><i class="fas fa-mobile-alt"></i> <strong>Name: </strong></li> -->
-                                        <li><i class="fas fa-info-circle"></i> <strong>Description:</strong> {{ product.description }}</li>
-                                        <li><i class="fas fa-camera"></i> <strong>Camera:</strong> {{ product.camera }}</li>
-                                        <li><i class="fas fa-hdd"></i> <strong>Storage/RAM:</strong> {{ product.storage_ram }}</li>
-                                        <li><i class="fas fa-battery-full"></i> <strong>Battery:</strong> {{ product.battery }}</li>
-                                        <li><i class="fab fa-android"></i> <strong>Android Version:</strong> {{ product.android_version }}</li>
-                                        <li><i class="fas fa-sim-card"></i> <strong>SIM Type:</strong> {{ product.sim_type }}</li>
-                                        <li><i class="fas fa-mobile"></i> <strong>Screen:</strong> {{ product.screen }}</li>
-                                        <li><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> Tsh{{ product.price }}</li>
-                                        <li><i class="fas fa-piggy-bank"></i> <strong>Deposit:</strong> Tsh{{ product.initial_loan_amount }}</li>
-                                    </ul>
-                                    <!-- Buy Now Button -->
-                                    <a href="{% url 'phone_details' phone_id=product.id %}" class="btn btn-primary">Buy Now</a>
-                                </div>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-info-circle"></i> <strong>Description:</strong> {{ product.description }}</li>
+                                    <li><i class="fas fa-camera"></i> <strong>Camera:</strong> {{ product.camera }}</li>
+                                    <li><i class="fas fa-hdd"></i> <strong>Storage/RAM:</strong> {{ product.storage_ram }}</li>
+                                    <li><i class="fas fa-battery-full"></i> <strong>Battery:</strong> {{ product.battery }}</li>
+                                    <li><i class="fab fa-android"></i> <strong>Android Version:</strong> {{ product.android_version }}</li>
+                                    <li><i class="fas fa-sim-card"></i> <strong>SIM Type:</strong> {{ product.sim_type }}</li>
+                                    <li><i class="fas fa-mobile"></i> <strong>Screen:</strong> {{ product.screen }}</li>
+                                    <li><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> Tsh{{ product.price }}</li>
+                                    <li><i class="fas fa-piggy-bank"></i> <strong>Deposit:</strong> Tsh{{ product.initial_loan_amount }}</li>
+                                </ul>
+                                <a href="{% url 'phone_details' phone_id=product.id %}" class="btn btn-primary">Buy Now</a>
                             </div>
                         </div>
                     </div>
@@ -104,55 +101,47 @@
         </div>
     </div>
     {% endfor %}
-    
 
-    <!-- How it works -->
-<div class="container my-5">
-    <div class="row">
-        <!-- Step 1: Choose a Phone -->
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card text-center" style="border-radius: 10%;">
-                <div class="card-body">
-                    <i class="fa fa-mobile fa-3x mb-3 text-primary"></i> <!-- Icon -->
-                    <h5 class="card-title">Choose a Phone</h5>
-                    <p class="card-text">Explore our wide range of phones and choose the one that fits your needs.</p>
+    <!-- How it Works -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card">
+                    <div class="card-body">
+                        <i class="fa fa-mobile fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Choose a Phone</h5>
+                        <p class="card-text">Explore our wide range of phones and choose the one that fits your needs.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Step 2: Make an Order -->
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card text-center" style="border-radius: 10%;">
-                <div class="card-body">
-                    <i class="fa fa-shopping-cart fa-3x mb-3 text-primary"></i> <!-- Icon -->
-                    <h5 class="card-title">Make an Order</h5>
-                    <p class="card-text">Place your order with just a few clicks and proceed to checkout.</p>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card">
+                    <div class="card-body">
+                        <i class="fa fa-shopping-cart fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Make an Order</h5>
+                        <p class="card-text">Place your order with just a few clicks and proceed to checkout.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Step 3: Make a Payment -->
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card text-center" style="border-radius: 10%;">
-                <div class="card-body">
-                    <i class="fa fa-credit-card fa-3x mb-3 text-primary"></i> <!-- Icon -->
-                    <h5 class="card-title">Make a Payment</h5>
-                    <p class="card-text">Securely complete your payment using our trusted payment gateway.</p>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card">
+                    <div class="card-body">
+                        <i class="fa fa-credit-card fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Make a Payment</h5>
+                        <p class="card-text">Securely complete your payment using our trusted payment gateway.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Step 4: Phone Delivery -->
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card text-center" style="border-radius: 10%;">
-                <div class="card-body">
-                    <i class="fa fa-motorcycle fa-3x mb-3 text-primary"></i> <!-- Motorcycle Icon -->
-                    <h5 class="card-title">Phone Delivery</h5>
-                    <p class="card-text">Sit back and relax while we deliver your phone right to your doorstep.</p>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card">
+                    <div class="card-body">
+                        <i class="fa fa-motorcycle fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Phone Delivery</h5>
+                        <p class="card-text">Sit back and relax while we deliver your phone right to your doorstep.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}

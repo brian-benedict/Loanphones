@@ -18,4 +18,8 @@ urlpatterns = [
     path('admins/', views.admin_home, name='admin_home'),
     path('admins/product-registration/', views.product_registration, name='product_registration'),
     path('admins/download-data/', views.download_data, name='download_data'),
+    path('products/', views.product_list, name='product_list'),
+    path('product_edit/<int:product_id>/', views.product_edit, name='product_edit'),
+    path('product_delete/<int:product_id>/', views.product_delete, name='product_delete'),
+
 ]

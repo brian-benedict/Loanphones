@@ -22,21 +22,50 @@ class Customer(models.Model):
     def __str__(self):
         return self.full_name
 
+# class Product(models.Model):
+#     name = models.CharField(max_length=100)
+#     description = models.TextField()
+#     image = models.ImageField(upload_to='phones/static/product_images/')
+#     camera = models.CharField(max_length=100)
+#     storage_ram = models.CharField(max_length=100)
+#     battery = models.CharField(max_length=100)
+#     android_version = models.CharField(max_length=100)
+#     sim_type = models.CharField(max_length=100)
+#     screen = models.CharField(max_length=100)
+#     price = models.DecimalField(max_digits=10, decimal_places=2)  # Add price field
+#     initial_loan_amount = models.DecimalField(max_digits=10, decimal_places=2)  # Initial amount for loan
+
+#     def __str__(self):
+#         return self.name
+
+
+
+from django.db import models
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='phones/static/product_images/')
+    image = models.ImageField(upload_to='static/product_images/')
     camera = models.CharField(max_length=100)
     storage_ram = models.CharField(max_length=100)
     battery = models.CharField(max_length=100)
     android_version = models.CharField(max_length=100)
     sim_type = models.CharField(max_length=100)
     screen = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=10, decimal_places=2)  # Add price field
-    initial_loan_amount = models.DecimalField(max_digits=10, decimal_places=2)  # Initial amount for loan
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    initial_loan_amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.name
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, related_name='additional_images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='static/product_images/')
+
+    def __str__(self):
+        return f"Image for {self.product.name}"
+
+
 
 
 

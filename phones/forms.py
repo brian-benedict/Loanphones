@@ -8,12 +8,20 @@ class CustomerForm(forms.ModelForm):
 
 
 
-from .models import Product
+from django import forms
+from .models import Product, ProductImage
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'image', 'camera', 'storage_ram', 'battery', 'android_version', 'sim_type', 'screen', 'price' ,'initial_loan_amount']
+        fields = ['name', 'description', 'image', 'camera', 'storage_ram', 'battery', 'android_version', 'sim_type', 'screen', 'price', 'initial_loan_amount']
+
+class ProductImageForm(forms.ModelForm):
+    class Meta:
+        model = ProductImage
+        fields = ['image']
+
+ProductImageFormSet = forms.inlineformset_factory(Product, ProductImage, form=ProductImageForm, extra=3, can_delete=True)
 
 
 # In forms.py

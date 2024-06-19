@@ -4,7 +4,9 @@ from django.shortcuts import render, redirect
 from .models import Phone, Customer, Product, PaymentApplication
 from django.contrib import messages
 
-
+from django.contrib.auth.decorators import login_required
+from .forms import ProductForm, ProductImageFormSet
+from .models import Product
 
 
 from django.contrib.auth import login, logout, authenticate
@@ -13,6 +15,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 
+
+
+from django.http import HttpResponse
+import csv
 
 # Create your views here.
 
@@ -51,19 +57,62 @@ def about_us(request):
 
 
 
-from django.http import HttpResponse
-import csv
+
+
+# @login_required
+# def product_registration(request):
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('admin_home')  # Redirect to admin home after successful registration
+#     else:
+#         form = ProductForm()
+#     return render(request, 'product_registration.html', {'form': form})
+
+# from django.contrib.auth.decorators import login_required
+# from .forms import ProductForm, ProductImageFormSet
+# from .models import Product
+
+# @login_required
+# def product_registration(request):
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, request.FILES)
+#         formset = ProductImageFormSet(request.POST, request.FILES, instance=Product())
+#         if form.is_valid() and formset.is_valid():
+#             product = form.save()
+#             formset.instance = product
+#             formset.save()
+#             return redirect('admin_home')  # Redirect to admin home after successful registration
+#     else:
+#         form = ProductForm()
+#         formset = ProductImageFormSet(instance=Product())
+#     return render(request, 'admin/product_registration.html', {'form': form, 'formset': formset})
+
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .forms import ProductForm, ProductImageFormSet
+from .models import Product, ProductImage
 
 @login_required
 def product_registration(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product = form.save()
+            # Handle additional images
+            additional_images = request.FILES.getlist('additional_images')
+            for image in additional_images:
+                ProductImage.objects.create(product=product, image=image)
             return redirect('admin_home')  # Redirect to admin home after successful registration
     else:
         form = ProductForm()
-    return render(request, 'product_registration.html', {'form': form})
+    return render(request, 'admin/product_registration.html', {'form': form})
+
+
 
 
 
@@ -238,7 +287,8 @@ def payment_application(request, product_id):
 
 @login_required
 def admin_home(request):
-    return render(request, 'admin/admin_home.html')
+    products = Product.objects.all()
+    return render(request, 'admin/admin_home.html', {'products': products})
 
 
 
@@ -259,3 +309,52 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Product, ProductImage
+from .forms import ProductForm, ProductImageFormSet
+
+@login_required
+def product_edit(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        formset = ProductImageFormSet(request.POST, request.FILES, instance=product)
+        if form.is_valid() and formset.is_valid():
+            form.save()
+            formset.save()
+            return redirect('admin_home')  # Redirect to admin home after successful edit
+    else:
+        form = ProductForm(instance=product)
+        formset = ProductImageFormSet(instance=product)
+    return render(request, 'admin/product_edit.html', {'form': form, 'formset': formset, 'product': product})
+
+@login_required
+def product_delete(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('admin_home')
+    return render(request, 'admin/product_delete.html', {'product': product})
+
+
+
+
+
+
+
+
+
+
+
+from django.shortcuts import render
+from .models import Product
+
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'product_list.html', {'products': products})

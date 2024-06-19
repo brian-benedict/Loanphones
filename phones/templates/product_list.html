@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+</head>
+<body>
+    <h1>Product List</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Primary Image URL: {{ product.image.url }}</p>
+                <p>Camera: {{ product.camera }}</p>
+                <p>Storage RAM: {{ product.storage_ram }}</p>
+                <p>Battery: {{ product.battery }}</p>
+                <p>Android Version: {{ product.android_version }}</p>
+                <p>SIM Type: {{ product.sim_type }}</p>
+                <p>Screen: {{ product.screen }}</p>
+                <p>Price: {{ product.price }}</p>
+                <p>Initial Loan Amount: {{ product.initial_loan_amount }}</p>
+
+                <h3>Additional Images:</h3>
+                <ul>
+                    {% for image in product.additional_images.all %}
+                        <li>Additional Image URL: {{ image.image.url }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
