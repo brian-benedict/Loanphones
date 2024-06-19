@@ -319,28 +319,48 @@ from django.contrib.auth.decorators import login_required
 from .models import Product, ProductImage
 from .forms import ProductForm, ProductImageFormSet
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .forms import ProductForm
+from .models import Product, ProductImage
+
 @login_required
 def product_edit(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
-        formset = ProductImageFormSet(request.POST, request.FILES, instance=product)
-        if form.is_valid() and formset.is_valid():
-            form.save()
-            formset.save()
+        if form.is_valid():
+            product = form.save()
+            # Handle additional images
+            additional_images = request.FILES.getlist('additional_images')
+            for image in additional_images:
+                ProductImage.objects.create(product=product, image=image)
             return redirect('admin_home')  # Redirect to admin home after successful edit
     else:
         form = ProductForm(instance=product)
-        formset = ProductImageFormSet(instance=product)
-    return render(request, 'admin/product_edit.html', {'form': form, 'formset': formset, 'product': product})
+    return render(request, 'admin/product_edit.html', {'form': form, 'product': product})
+
+
+
+
+
+
+
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Product, ProductImage
 
 @login_required
 def product_delete(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    if request.method == 'POST':
-        product.delete()
-        return redirect('admin_home')
-    return render(request, 'admin/product_delete.html', {'product': product})
+    product.delete()
+    return redirect('admin_home')
+
+@login_required
+def product_image_delete(request, image_id):
+    image = get_object_or_404(ProductImage, id=image_id)
+    image.delete()
+    return redirect('admin/product_edit', product_id=image.product.id)
 
 
 
