@@ -331,10 +331,25 @@ def product_edit(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             product = form.save()
+
+            # Handle main image URL editing
+            main_image_url = request.POST.get('main_image_url')
+            if main_image_url:
+                product.image = main_image_url
+                product.save()
+
             # Handle additional images
             additional_images = request.FILES.getlist('additional_images')
             for image in additional_images:
                 ProductImage.objects.create(product=product, image=image)
+
+            # Handle editing image URLs for additional images
+            for image in product.additional_images.all():
+                image_url = request.POST.get(f'image_urls_{image.id}')
+                if image_url:
+                    image.image = image_url
+                    image.save()
+
             return redirect('admin_home')  # Redirect to admin home after successful edit
     else:
         form = ProductForm(instance=product)
