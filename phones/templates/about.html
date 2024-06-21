@@ -1,57 +1,75 @@
-<!-- <div class="container-fluid p-0">
-    <div class="about-header" style="background-color: #f8f9fa; padding: 100px 0; text-align: center;">
-        <div class="overlay">
-        <div class="content">
-            <h1 class="mt-5 mb-4">About Us</h1>
-            <p class="lead">Welcome to Phone Store, your one-stop destination for the latest mobile phones!</p>
-        </div>
-    </div>
-
-    <div class="container mt-5 mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="card card-custom-1 text-center shadow">
-                    <div class="card-body">
-                        <i class="fas fa-coins fa-3x mb-3 text-warning"></i>
-                        <h3 class="card-title">Fast</h3>
-                        <p class="card-text">We aim to get your asset processed within 20 minutes!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-custom-2 text-center shadow">
-                    <div class="card-body">
-                        <i class="far fa-calendar-alt fa-3x mb-3 text-success"></i>
-                        <h3 class="card-title">Flexible</h3>
-                        <p class="card-text">Low down payment with affordable weekly payments for 52 weeks.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-custom-3 text-center shadow">
-                    <div class="card-body">
-                        <i class="fas fa-file-contract fa-3x mb-3 text-info"></i>
-                        <h3 class="card-title">Transparent</h3>
-                        <p class="card-text">No hidden fees; what you see is what you get.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 {% extends 'base.html' %}
 {% load custom_filters %}
 
-{% block title %}About Us - Phone Store{% endblock %}
+{% block title %}About Us - SimuSmat {% endblock %}
 
 {% block content %}
+<style>
+    .about-header {
+        background-image: url('https://source.unsplash.com/1600x900/?mobile');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+    .about-header .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .about-header .content {
+        position: relative;
+        z-index: 2;
+    }
+    .card-custom {
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-custom:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .card-custom i {
+        transition: color 0.3s ease;
+    }
+    .card-custom:hover i {
+        color: #333;
+    }
+    .btn-contact {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.25rem;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .btn-contact {
+        background-color: #17a2b8;
+    }
+    .btn-contact:hover {
+        background-color: #138496;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+    }
+</style>
+
 <div class="container-fluid p-0">
-    <div class="about-header" style="background-color: #f8f9fa; padding: 100px 0; text-align: center;">
-        <div class="overlay">
+    <div class="about-header">
+        <div class="overlay"></div>
         <div class="content">
-            <h1 class="mt-5 mb-4"><i class="fa fa-info-circle"></i>   About Us</h1> <!-- Include Bootstrap icon class here -->
-            <p class="lead">Welcome to Phone World, your one-stop destination for the latest mobile phones!</p>
+            <h1 class="mt-5 mb-4"><i class="fa fa-info-circle"></i> About Us</h1>
+            <p class="lead">Welcome to SimuSmat, your one-stop destination for the latest mobile phones!</p>
         </div>
     </div>
 </div>
@@ -59,27 +77,27 @@
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <div class="card card-custom-1 text-center shadow">
+            <div class="card card-custom text-center shadow">
                 <div class="card-body">
-                    <i class="fas {{ 'Efficient'|get_icon_class }} fa-3x mb-3 text-warning"></i>
+                    <i class="fas fa-bolt fa-3x mb-3 text-warning"></i>
                     <h3 class="card-title">Efficient</h3>
                     <p class="card-text">We aim to provide efficient and reliable service to our customers.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-custom-2 text-center shadow">
+            <div class="card card-custom text-center shadow">
                 <div class="card-body">
-                    <i class="far {{ 'Convenient'|get_icon_class }} fa-3x mb-3 text-success"></i>
+                    <i class="far fa-clock fa-3x mb-3 text-success"></i>
                     <h3 class="card-title">Convenient</h3>
                     <p class="card-text">We offer convenient payment plans tailored to your needs.</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-custom-3 text-center shadow">
+            <div class="card card-custom text-center shadow">
                 <div class="card-body">
-                    <i class="fas {{ 'Transparent'|get_icon_class }} fa-3x mb-3 text-info"></i>
+                    <i class="fas fa-check-circle fa-3x mb-3 text-info"></i>
                     <h3 class="card-title">Transparent</h3>
                     <p class="card-text">We believe in transparency and honesty in all our dealings.</p>
                 </div>
@@ -87,5 +105,56 @@
         </div>
     </div>
 </div>
-{% endblock %}
 
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 text-center">
+            <h2 class="mb-4">Our Story</h2>
+            <p class="lead">SimuSmat was founded with the vision to revolutionize the mobile phone industry by providing the latest and greatest mobile phones at affordable prices. We pride ourselves on our customer-centric approach and strive to deliver unparalleled service.</p>
+            <a href="#contactFormModal" class="btn btn-contact" data-toggle="modal" data-target="#contactFormModal">Contact Us</a>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Form Modal -->
+<div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactFormModalLabel">Contact Us</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'contact_us' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS for Modal and Carousel functionality -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+</script>
+{% endblock %}
