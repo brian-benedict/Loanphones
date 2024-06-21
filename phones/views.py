@@ -27,8 +27,8 @@ def home(request):
     return render(request, 'home.html', {'products': products})
 
 def phone_details(request, phone_id):
-    products = Product.objects.get(id=phone_id)
-    return render(request, 'phone_details.html', {'products': products})
+    product = get_object_or_404(Product, id=phone_id)
+    return render(request, 'phone_details.html', {'product': product})
 
 def contact_us(request):
     if request.method == 'POST':
