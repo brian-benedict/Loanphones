@@ -3,15 +3,62 @@
 {% block title %}Contact Us - Phone Store{% endblock %}
 
 {% block content %}
+<style>
+    .about-header {
+        background-image: url('https://source.unsplash.com/1600x900/?contact');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+    .about-header .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    .about-header .content {
+        position: relative;
+        z-index: 2;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .list-group-item i {
+        color: #007bff;
+        margin-right: 10px;
+    }
+    .accordion .card-header {
+        background-color: #f8f9fa;
+    }
+    .accordion .btn-link {
+        text-decoration: none;
+        color: #007bff;
+    }
+    .accordion .btn-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
 <div class="container-fluid p-0">
-    <div class="about-header" style="background-color: #f8f9fa; padding: 100px 0; text-align: center;">
-        <div class="overlay"></div> <!-- Optional: Add an overlay for better readability of text -->
+    <div class="about-header">
+        <div class="overlay"></div>
         <div class="content">
-            <h1 class="mt-3 mb-4">Contact Us   <i class="fa fa-phone"></i></h1>
-            <p class="lead">Welcome to Phone World, your one-stop destination for the latest mobile phones!</p>
+            <h1 class="mt-3 mb-4">Contact Us <i class="fa fa-phone"></i></h1>
+            <p class="lead">We are here to help you with your mobile phone needs!</p>
         </div>
     </div>
-</div>    
+</div>
+
 <div class="container mt-4 mb-4">
     <div class="row">
         <div class="col-md-6">
@@ -19,98 +66,109 @@
             <p class="lead">Fill out the form below to contact us:</p>
             <form method="post" class="needs-validation" novalidate>
                 {% csrf_token %}
-                <!-- Name Input -->
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                    <div class="invalid-feedback">Please enter your name.</div>
                 </div>
-        
-                <!-- Email Input -->
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
-        
-                <!-- Message Textarea -->
                 <div class="form-group">
                     <label for="message">Message</label>
                     <textarea class="form-control" id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+                    <div class="invalid-feedback">Please enter your message.</div>
                 </div>
-        
-                <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-        
         </div>
         <div class="col-md-6">
             <h1>Our Locations</h1>
             <p class="lead">Visit any of our stores:</p>
-            <!-- List of store locations -->
             <ul class="list-group">
-                <li class="list-group-item"><i class="fas fa-geo-fill"></i> Store 1: Arusha - Tengeru</li>
-                <li class="list-group-item"><i class="bi bi-geo-alt-fill"></i> Store 2: Dar es Salaam - Kigamboni</li>
-                <li class="list-group-item"><i class="bi bi-geo-alt-fill"></i> Store 3: Mwanza - Kisesa</li>
-                <!-- Add more locations as needed -->
+                <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> Store 1: Arusha - Tengeru</li>
+                <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> Store 2: Dar es Salaam - Kigamboni</li>
+                <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> Store 3: Mwanza - Kisesa</li>
             </ul>
         </div>
-
     </div>
 
-
-
-<!-- FAQ Section -->
-<div class="row mt-5">
-    <div class="col-md-12">
-        <h1>Frequently Asked Questions</h1>
-        <div class="accordion" id="faqAccordion">
-            <div class="card">
-                <div class="card-header" id="question0">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#answer0" aria-expanded="true" aria-controls="answer1">
-                            What is Phone Store?
-                        </button>
-                    </h5>
-                </div>
-                <div id="answer0" class="collapse show" aria-labelledby="question0" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        Phone store provides flexible smartphone financing solutions in sub-Saharan Africa, including Kenya.
+    <!-- FAQ Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h1>Frequently Asked Questions</h1>
+            <div class="accordion" id="faqAccordion">
+                <div class="card">
+                    <div class="card-header" id="question0">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#answer0" aria-expanded="true" aria-controls="answer0">
+                                What is SimuSmat?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="answer0" class="collapse show" aria-labelledby="question0" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            SimuSmat provides flexible smartphone financing solutions in sub-Saharan Africa, including Kenya.
+                        </div>
                     </div>
                 </div>
-            </div>
-        <div class="accordion" id="faqAccordion">
-            <div class="card">
-                <div class="card-header" id="question1">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#answer1" aria-expanded="true" aria-controls="answer1">
-                            What is Phone Store?
-                        </button>
-                    </h5>
-                </div>
-                <div id="answer1" class="collapse show" aria-labelledby="question1" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        Phone Store provides flexible smartphone financing solutions in sub-Saharan Africa, including Kenya.
+                <div class="card">
+                    <div class="card-header" id="question1">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#answer1" aria-expanded="true" aria-controls="answer1">
+                                How can I contact customer support?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="answer1" class="collapse" aria-labelledby="question1" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            You can contact our customer support via the contact form on this page or by visiting any of our stores.
+                        </div>
                     </div>
                 </div>
-            </div>
-        <div class="accordion" id="faqAccordion">
-            <div class="card">
-                <div class="card-header" id="question1">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#answer2" aria-expanded="true" aria-controls="answer1">
-                            What is Phone Store?
-                        </button>
-                    </h5>
-                </div>
-                <div id="answer2" class="collapse show" aria-labelledby="question2" data-parent="#faqAccordion">
-                    <div class="card-body">
-                        Phone Store provides flexible smartphone financing solutions in sub-Saharan Africa, including Kenya.
+                <div class="card">
+                    <div class="card-header" id="question2">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#answer2" aria-expanded="true" aria-controls="answer2">
+                                What are your store hours?
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="answer2" class="collapse" aria-labelledby="question2" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Our store hours are from 9 AM to 6 PM, Monday to Saturday.
+                        </div>
                     </div>
                 </div>
+                <!-- Add more FAQ items as needed -->
             </div>
-            <!-- Add more FAQ items as needed -->
         </div>
     </div>
 </div>
-</div>
-</div>
+
+<script>
+    // Custom JavaScript for form validation
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<!-- Include Bootstrap JS for Modal and Accordion functionality -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 {% endblock %}

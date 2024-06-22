@@ -7,221 +7,95 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
-body {
-    background-color: #0075C9; /* Main background color */
-}
-
-.footer {
-    background-color: #333; /* Dark footer background */
-    padding: 20px 0;
-}
-
-.footer h5 {
-    color: #fff; /* White text for headings */
-}
-
-.footer ul {
-    list-style: none; /* Remove default list styling */
-}
-
-.footer ul li {
-    color: #ddd; /* Light grey text for list items */
-}
-
-.btn-social-icon {
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent buttons */
-    color: #fff; /* White icons */
-}
-
-.btn-social-icon:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* More visible on hover */
-}
-
-.logo-text {
-    color: #0075C9; /* Blue color */
-    font-size: 36px; /* Adjust font size as needed */
-    font-weight: bold; /* Make it bold */
-    text-transform: uppercase; /* Uppercase text */
-    letter-spacing: 2px; /* Add spacing between letters */
-}
-
-.card-custom-1 {
-    background-color: #ffc107; /* Yellow */
-}
-
-.card-custom-2 {
-    background-color: #28a745; /* Green */
-}
-
-.card-custom-3 {
-    background-color: #007bff; /* Blue */
-}
-
-.about-header {
-    height: 300px; /* Adjust the height as needed */
-    position: relative; /* Ensure overlay covers the entire background */
-    color: #fff; /* Optional: Change text color for better contrast */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add an overlay for better readability of text */
-}
-
-.content {
-    position: relative; /* Ensure text is positioned correctly */
-    z-index: 1; /* Ensure text appears above overlay */
-}
-
-.carousel-caption h5, .carousel-caption p {
-    background: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-}
-
-.how-it-works-card {
-    border-radius: 10%;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.how-it-works-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.modal-body img {
-    max-height: 300px;
-    object-fit: cover;
-}
-
-.modal-content {
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.footer .container {
-    padding: 10px;
-}
-
-.footer span {
-    font-size: 14px;
-    color: #6c757d;
-}
-
-
-
-
-
-
-
-body {
-    background-color: #0075C9; /* Set the main background color */
-}
-
-
-.footer {
-    background-color: #333; /* Dark footer background */
-}
-
-.footer h5 {
-    color: #fff; /* White text for headings */
-}
-
-.footer ul {
-    list-style: none; /* Remove default list styling */
-}
-
-.footer ul li {
-    color: #ddd; /* Light grey text for list items */
-}
-
-.btn-social-icon {
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent buttons */
-    color: #fff; /* White icons */
-}
-
-.btn-social-icon:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* More visible on hover */
-}
-
-.logo-text {
-    color: #0075C9; /* Blue color */
-    font-size: 36px; /* Adjust font size as needed */
-    font-weight: bold; /* Make it bold */
-    text-transform: uppercase; /* Uppercase text */
-    letter-spacing: 2px; /* Add spacing between letters */
-} 
-
-.card-custom-1 {
-    background-color: #ffc107; /* Yellow */
-}
-
-.card-custom-2 {
-    background-color: #28a745; /* Green */
-}
-
-.card-custom-3 {
-    background-color: #007bff; /* Blue */
-}
-
-.about-header {
-    height: 300px; /* Adjust the height as needed */
-    position: relative; /* Ensure overlay covers the entire background */
-    color: #fff; /* Optional: Change text color for better contrast */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add an overlay for better readability of text */
-}
-
-.content {
-    position: relative; /* Ensure text is positioned correctly */
-    z-index: 1; /* Ensure text appears above overlay */
-}
-    /* Custom CSS */
-.navbar {
-    background-color: #0075C9;
-    padding: 1rem;
-}
-.navbar .navbar-brand {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-}
-.navbar .navbar-nav .nav-link {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    color: #fff;
-    margin-right: 1rem;
-}
-.navbar .navbar-nav .nav-link:hover {
-    color: #0c0c0c; /* Gold color */
-}
-.navbar-toggler {
-    border-color: #fff;
-}
-.navbar-toggler-icon {
-    color: #fff;
-}
-</style>
+        body {
+            background-color: #0075C9; /* Main background color */
+        }
+        .footer {
+            background-color: #333; /* Dark footer background */
+            padding: 20px 0;
+        }
+        .footer h5 {
+            color: #fff; /* White text for headings */
+        }
+        .footer ul {
+            list-style: none; /* Remove default list styling */
+        }
+        .footer ul li {
+            color: #ddd; /* Light grey text for list items */
+        }
+        .btn-social-icon {
+            background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent buttons */
+            color: #fff; /* White icons */
+        }
+        .btn-social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* More visible on hover */
+        }
+        .logo-text {
+            color: #0075C9; /* Blue color */
+            font-size: 36px; /* Adjust font size as needed */
+            font-weight: bold; /* Make it bold */
+            text-transform: uppercase; /* Uppercase text */
+            letter-spacing: 2px; /* Add spacing between letters */
+        }
+        .card-custom-1 {
+            background-color: #ffc107; /* Yellow */
+        }
+        .card-custom-2 {
+            background-color: #28a745; /* Green */
+        }
+        .card-custom-3 {
+            background-color: #007bff; /* Blue */
+        }
+        .about-header {
+            height: 300px; /* Adjust the height as needed */
+            position: relative; /* Ensure overlay covers the entire background */
+            color: #fff; /* Optional: Change text color for better contrast */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Optional: Add an overlay for better readability of text */
+        }
+        .content {
+            position: relative; /* Ensure text is positioned correctly */
+            z-index: 1; /* Ensure text appears above overlay */
+        }
+        .navbar {
+            background-color: #0075C9;
+            padding: 1rem;
+        }
+        .navbar .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .navbar .navbar-nav .nav-link {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            color: #fff;
+            margin-right: 1rem;
+        }
+        .navbar .navbar-nav .nav-link:hover {
+            color: #0c0c0c; /* Gold color */
+        }
+        .navbar-toggler {
+            border-color: #fff;
+        }
+        .navbar-toggler-icon {
+            color: #fff;
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
     <!-- Include Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand logo-text" href="{% url 'home' %}">SimuSmat</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
@@ -241,58 +115,56 @@ body {
         </div>
     </nav>
 
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
 
-<div >
-    {% block content %}
-    {% endblock %}
-</div>
-
-
-<footer class="footer bg-dark text-white">
-    <div class="container py-5">
-        <div class="row">
-            <!-- About Information -->
-            <div class="col-md-4 mb-4 mb-md-0">
-                <h1 class="logo-text mb-4">SimuSmat</h1>
-                <p>Our company has been providing quality products since 2023. Visit us to learn more.</p>
-            </div>
-            <!-- Contact Information -->
-            <div class="col-md-4 mb-4 mb-md-0">
-                <h5 class="text-primary">Contact Us</h5>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-map-marker-alt pr-2"></i> Arusha, Tanzania</li>
-                    <li><i class="fas fa-phone-alt pr-2"></i> +255 713623409</li>
-                    <li><i class="fas fa-envelope pr-2"></i> SimuSmat@info.com</li>
-                </ul>
-            </div>
-            <!-- Subscription Form -->
-            <div class="col-md-4">
-                <h5 class="text-primary mb-3">Subscribe to Our Newsletter</h5>
-                <form action="/subscribe" method="post">
-                    <div class="input-group">
-                        <input type="email" name="email" class="form-control" placeholder="Your Email" aria-label="Your Email" required>
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Subscribe</button>
+    <footer class="footer bg-dark text-white">
+        <div class="container py-5">
+            <div class="row">
+                <!-- About Information -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h1 class="logo-text mb-4">SimuSmat</h1>
+                    <p>Our company has been providing quality products since 2023. Visit us to learn more.</p>
+                </div>
+                <!-- Contact Information -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-primary">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt pr-2"></i> Arusha, Tanzania</li>
+                        <li><i class="fas fa-phone-alt pr-2"></i> +255 713623409</li>
+                        <li><i class="fas fa-envelope pr-2"></i> SimuSmat@info.com</li>
+                    </ul>
+                </div>
+                <!-- Subscription Form -->
+                <div class="col-md-4">
+                    <h5 class="text-primary mb-3">Subscribe to Our Newsletter</h5>
+                    <form action="{% url 'subscribe_newsletter' %}" method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" aria-label="Your Email" required>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-secondary">Subscribe</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container text-center">
-        <span class="text-muted">Follow us on:</span>
-        <a href="#" class="btn btn-social-icon btn-facebook mx-1"><i class="fab fa-facebook-f text-primary"></i></a>
-        <a href="#" class="btn btn-social-icon btn-twitter mx-1"><i class="fab fa-twitter text-primary"></i></a>
-        <a href="#" class="btn btn-social-icon btn-instagram mx-1"><i class="fab fa-instagram text-primary"></i></a>
-    </div>
-</footer>
-  
+        <div class="container text-center">
+            <span class="text-muted">Follow us on:</span>
+            <a href="#" class="btn btn-social-icon btn-facebook mx-1"><i class="fab fa-facebook-f text-primary"></i></a>
+            <a href="#" class="btn btn-social-icon btn-twitter mx-1"><i class="fab fa-twitter text-primary"></i></a>
+            <a href="#" class="btn btn-social-icon btn-instagram mx-1"><i class="fab fa-instagram text-primary"></i></a>
+        </div>
+    </footer>
 
-<!-- Include Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 </body>
 </html>

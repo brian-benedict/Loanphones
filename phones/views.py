@@ -393,3 +393,49 @@ from .models import Product
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'product_list.html', {'products': products})
+
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import NewsletterForm
+
+def subscribe_newsletter(request):
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            # Here you would add the logic to handle the email subscription, e.g., saving to a database or sending to a mailing list
+            messages.success(request, 'You have subscribed to our newsletter successfully!')
+            return redirect('home')  # Redirect to home or any other page
+    else:
+        form = NewsletterForm()
+    
+    return render(request, 'subscribe_newsletter.html', {'form': form})
+
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.contrib import messages
+
+def contact_us(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        if name and email and message:
+            # Send an email
+            send_mail(
+                f'Message from {name}',
+                message,
+                email,
+                ['your_email@example.com'],
+            )
+            messages.success(request, 'Your message has been sent successfully!')
+            return redirect('contact_us')
+        else:
+            messages.error(request, 'Please fill out all fields.')
+
+    return render(request, 'contact.html')
