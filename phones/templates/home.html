@@ -96,15 +96,82 @@
     </div>
     {% endfor %}
 
+</div>
+
+
+    <!-- Customer Reviews -->
+    <div class="my-5">
+        <div class="review-section p-5 rounded">
+            <div class="container mt-5">
+            <h2 class="text-center mb-4">Customer Reviews</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Hassan Juma</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">June 24, 2024</h6>
+                            <p class="card-text flex-grow-1">Amazing phone! Great camera quality and battery life. Highly recommend!</p>
+                            <div class="rating">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-o text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Jane Shayo</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">June 14, 2024</h6>
+                            <p class="card-text flex-grow-1">The delivery was quick and the phone works perfectly. Great service!</p>
+                            <div class="rating">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Kasili Bomani</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">May 17, 2024</h6>
+                            <p class="card-text flex-grow-1">Good value for money. The phone is fast and has all the features I need.</p>
+                            <div class="rating">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-o text-warning"></i>
+                                <i class="fa fa-star-o text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<div class="container mt-5">
     <!-- How it Works -->
     <div class="container my-5">
+        <h2 class="text-center mb-4">How It Works</h2>
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card text-center how-it-works-card">
                     <div class="card-body">
                         <i class="fa fa-mobile fa-3x mb-3 text-primary"></i>
                         <h5 class="card-title">Choose a Phone</h5>
-                        <p class="card-text">Explore our wide range of phones and choose the one that fits your needs.</p>
+                        <p class="card-text">Explore our wide range of phones and select the one you love.</p>
                     </div>
                 </div>
             </div>
@@ -137,7 +204,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-primary back-to-top" id="back-to-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
 </div>
+
 <style>
     /* Additional CSS for product cards */
     .product-card {
@@ -178,9 +251,9 @@
         color: #fff;
     }
 
-/* CSS for How it Works cards */
+    /* CSS for How it Works cards */
     .how-it-works-card {
-        transition: transform 0.3s, box-shadow 0.3
+        transition: transform 0.3s, box-shadow 0.3s;
         border-radius: 10px;
         overflow: hidden;
     }
@@ -203,19 +276,79 @@
         color: #6c757d;
     }
 
-/* Modal styling */
-    .modal-body {
-        background: #f8f9fa;
+    /* CSS for review cards */
+    .review-section {
+        background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
     }
 
-    .modal-header {
-        border-bottom: none;
+    .review-card {
+        border: 1px solid #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+        display: flex;
+        flex-direction: column;
     }
 
-    .modal-footer {
-        border-top: none;
-        background: #f1f1f1;
+    .review-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
     }
 
+    .review-card .card-body {
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-card .card-title {
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .review-card .card-text {
+        color: #6c757d;
+        flex-grow: 1;
+    }
+
+    .review-card .rating {
+        margin-top: 10px;
+    }
+
+    .review-card .fa-star,
+    .review-card .fa-star-o {
+        color: #ffc107;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        z-index: 1000;
+    }
+
+    .back-to-top:hover {
+        background-color: #0056b3;
+    }
 </style>
+
+<script>
+    // Show or hide the back to top button
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 100) {
+            $('#back-to-top').fadeIn();
+        } else {
+            $('#back-to-top').fadeOut();
+        }
+    });
+
+    // Smooth scroll to top
+    $('#back-to-top').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+</script>
 {% endblock %}
