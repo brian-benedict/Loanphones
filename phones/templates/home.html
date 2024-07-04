@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
+{% load custom_filters %}
 
 {% block title %}Home - SimuSmat{% endblock %}
 
@@ -39,8 +41,8 @@
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">Pay a deposit of Tsh{{ product.initial_loan_amount }} and get a phone</p>
-                    <p class="card-text">Price: Tsh{{ product.price }}</p>
+                    <p class="card-text">Pay a deposit of Tsh{{ product.initial_loan_amount|remove_decimals|intcomma }} and get a phone</p>
+                    <p class="card-text">Price: Tsh{{ product.price|remove_decimals|intcomma }}</p>
                     <div class="d-flex justify-content-center align-items-center">
                         <button type="button" class="btn btn-secondary mr-2" data-toggle="modal" data-target="#quickViewModal{{ product.id }}">
                             Quick View
@@ -80,8 +82,8 @@
                                     <li><i class="fab fa-android"></i> <strong>Android Version:</strong> {{ product.android_version }}</li>
                                     <li><i class="fas fa-sim-card"></i> <strong>SIM Type:</strong> {{ product.sim_type }}</li>
                                     <li><i class="fas fa-mobile"></i> <strong>Screen:</strong> {{ product.screen }}</li>
-                                    <li><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> Tsh{{ product.price }}</li>
-                                    <li><i class="fas fa-piggy-bank"></i> <strong>Deposit:</strong> Tsh{{ product.initial_loan_amount }}</li>
+                                    <li><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> Tsh{{ product.price|remove_decimals|intcomma }}</li>
+                                    <li><i class="fas fa-piggy-bank"></i> <strong>Deposit:</strong> Tsh{{ product.initial_loan_amount|intcomma }}</li>
                                 </ul>
                                 <a href="{% url 'phone_details' phone_id=product.id %}" class="btn btn-primary">Buy Now</a>
                             </div>

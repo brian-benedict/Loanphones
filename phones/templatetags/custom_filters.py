@@ -13,3 +13,8 @@ def get_icon_class(title):
         return 'fa-handshake'
     else:
         return 'fa-question-circle'
+
+
+@register.filter
+def remove_decimals(value):
+    return int(value)
