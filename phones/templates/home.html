@@ -148,6 +148,140 @@
     {% endfor %}
 </div>
 
+
+  <!-- Customer Reviews -->
+    <div class="container my-5">
+        <div class="review-section p-5 rounded">
+            <h2 class="text-center mb-4">Customer Reviews</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">John Doe</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">June 25, 2024</h6>
+                            <p class="card-text flex-grow-1">Amazing phone! Great camera quality and battery life. Highly recommend!</p>
+                            <div class="rating">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-o text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Jane Smith</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">June 24, 2024</h6>
+                            <p class="card-text flex-grow-1">Fast delivery and excellent customer service. The phone is just as described.</p>
+                            <div class="rating">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card review-card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Michael Johnson</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">June 23, 2024</h6>
+                            <p class="card-text flex-grow-1">Great value for money. The phone's performance is outstanding.</p>
+                            <div class="rating">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star-half-o text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="container my-5">
+        <h2 class="text-center mb-4">How It Works</h2>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card h-100">
+                    <div class="card-body">
+                        <i class="fa fa-search fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Browse Products</h5>
+                        <p class="card-text">Explore our wide range of phones and select the one you love.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card h-100">
+                    <div class="card-body">
+                        <i class="fa fa-shopping-cart fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Make an Order</h5>
+                        <p class="card-text">Place your order with just a few clicks and proceed to checkout.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card h-100">
+                    <div class="card-body">
+                        <i class="fa fa-credit-card fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Make a Payment</h5>
+                        <p class="card-text">Securely complete your payment using our trusted payment gateway.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card text-center how-it-works-card h-100">
+                    <div class="card-body">
+                        <i class="fa fa-motorcycle fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Phone Delivery</h5>
+                        <p class="card-text">Sit back and relax while we deliver your phone right to your doorstep.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back-to-Top Button -->
+    <button id="back-to-top" class="btn btn-dark btn-circle">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+
+<!-- JavaScript for Back-to-Top Button -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+
+
+
+
 {% block extra_styles %}
 <style>
     /* Reduce font size for the requirements card */
@@ -189,6 +323,31 @@
     }
     .small-font {
         font-size: 0.9em;
+    }
+     /* Styling for back-to-top button */
+    #back-to-top {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+    #back-to-top.show {
+        display: flex;
+    }
+
+    .btn-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>
 {% endblock %}
