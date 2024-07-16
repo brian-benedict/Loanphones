@@ -41,6 +41,13 @@ class LoanApplicationForm(forms.ModelForm):
         model = PaymentApplication
         fields = ['firstname', 'lastname', 'id_number', 'phone1', 'phone2', 'region', 'district', 'street', 'gender', 'age_range', 'payment_choice']
 
+    widgets = {
+        'phone2': forms.TextInput(attrs={'required': False}),
+    }
+
+    def __init__(self, *args, **kwargs):
+        super(LoanApplicationForm, self).__init__(*args, **kwargs)
+        self.fields['phone2'].required = False
 
 from django import forms
 

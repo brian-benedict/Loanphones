@@ -89,7 +89,7 @@ class PaymentApplication(models.Model):
     lastname = models.CharField(max_length=100)
     id_number = models.CharField(max_length=100)
     phone1 = models.CharField(max_length=20)
-    phone2 = models.CharField(max_length=20)
+    phone2 = models.CharField(max_length=20, blank=True, null=True)
     region = models.CharField(max_length=100)
     district = models.CharField(max_length=100)
     street = models.CharField(max_length=100)
