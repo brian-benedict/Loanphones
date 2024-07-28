@@ -131,8 +131,8 @@
                                     <li><i class="fab fa-android"></i> <strong>Android Version:</strong> {{ product.android_version }}</li>
                                     <li><i class="fas fa-sim-card"></i> <strong>SIM Type:</strong> {{ product.sim_type }}</li>
                                     <li><i class="fas fa-mobile"></i> <strong>Screen:</strong> {{ product.screen }}</li>
-                                    <li><i class="fas fa-dollar-sign"></i> <strong>Price:</strong> Tsh{{ product.price|remove_decimals|intcomma }}</li>
-                                    <li><i class="fas fa-piggy-bank"></i> <strong>Deposit:</strong> Tsh{{ product.initial_loan_amount|intcomma }}</li>
+                                    <li><i class="fas fa-dollar-sign"></i> <strong>Cash: pay cash</strong> <strong class="text-success" style="font-size: 1em;">Tsh{{ product.price|remove_decimals|intcomma }}</strong></li>
+                                    <li><i class="fas fa-piggy-bank"></i> <strong>Loan: pay deposit</strong> <strong class="text-success" style="font-size: 1em;">Tsh{{ product.initial_loan_amount|remove_decimals|intcomma }}</strong></li>
                                 </ul>
                                 <a href="{% url 'phone_details' phone_id=product.id %}" class="btn btn-primary mt-3">Buy Now</a>
                             </div>
